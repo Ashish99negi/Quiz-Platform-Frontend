@@ -1,0 +1,41 @@
+@if (sidebar.isOverlay()) {
+  <div
+    class="fixed inset-0 bg-black/40 z-40"
+    (click)="sidebar.close()"
+  ></div>
+}
+
+<aside
+  class="bg-slate-900 text-white transition-all duration-300 ease-in-out z-50
+         h-[calc(100vh-4rem)]
+         fixed md:static top-16 left-0"
+  [class.w-64]="sidebar.isOpen()"
+  [class.w-0]="!sidebar.isOpen() && sidebar.isMobile()"
+  [class.w-20]="!sidebar.isOpen() && !sidebar.isMobile()"
+>
+  <nav>
+    <a
+      routerLink="/dashboard"
+      [class.active-link]="sidebar.isOpen() && isActive('/dashboard')"
+      class="menu-item"
+    >
+      <mat-icon>dashboard</mat-icon>
+
+      @if (sidebar.isOpen()) {
+        <span>Dashboard</span>
+      }
+    </a>
+
+    <a
+      routerLink="/profile"
+      [class.active-link]="sidebar.isOpen() && isActive('/profile')"
+      class="menu-item"
+    >
+      <mat-icon>person</mat-icon>
+
+      @if (sidebar.isOpen()) {
+        <span>Profile</span>
+      }
+    </a>
+  </nav>
+</aside>

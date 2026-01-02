@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+.menu-item {
+  @apply flex items-center gap-4 px-4 py-3 transition-colors duration-200;
+}
+
+.active-link {
+  @apply bg-slate-800/60;
+}
+
+@media (min-width: 768px) {
+  .active-link {
+    @apply border-l-4 border-blue-500 bg-slate-800;
+  }
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@keyframes floatSlow {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(40px) rotate(1deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.svg-float {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.svg-float-delayed {
+  animation: floatSlow 22s ease-in-out infinite;
+}

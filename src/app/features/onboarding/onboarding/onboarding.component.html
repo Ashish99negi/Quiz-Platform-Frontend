@@ -1,0 +1,52 @@
+<div class="w-full max-w-4xl bg-white rounded-3xl shadow-xl px-12 py-14">
+  <h2 class="text-3xl font-bold text-gray-900 text-center">
+    What are you preparing for?
+  </h2>
+
+  <p class="text-gray-500 text-center mt-2 mb-10">
+    We’ll personalize your mock tests and dashboard
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    @for (exam of exams; track exam.key) {
+      <button
+        type="button"
+        (click)="selectExam(exam.key)"
+        class="flex items-start gap-4 p-6 border rounded-2xl text-left transition
+               hover:border-blue-500 hover:bg-blue-50"
+        [class.border-blue-600]="selectedExam() === exam.key"
+        [class.bg-blue-50]="selectedExam() === exam.key"
+      >
+        <mat-icon
+          class="text-blue-600"
+          style="font-size: 36px; width: 36px; height: 36px"
+        >
+          {{ exam.icon }}
+        </mat-icon>
+
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900">
+            {{ exam.title }}
+          </h3>
+          <p class="text-sm text-gray-500 mt-1">
+            {{ exam.desc }}
+          </p>
+        </div>
+      </button>
+    }
+  </div>
+
+  <div class="flex justify-center mt-12">
+    <button
+      (click)="continue()"
+      class="px-10 py-3 rounded-xl text-white text-lg font-medium transition"
+      [class.bg-blue-600]="selectedExam()"
+      [class.hover:bg-blue-700]="selectedExam()"
+      [class.bg-gray-300]="!selectedExam()"
+      [class.cursor-not-allowed]="!selectedExam()"
+      [disabled]="!selectedExam()"
+    >
+      Continue
+    </button>
+  </div>
+</div>
